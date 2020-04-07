@@ -14,9 +14,7 @@ function setPlayerMoves() {
 	playingOptions=$((RANDOM % 3))
 
 	#! Increment player Position according to $playingOptions
-
 	case $playingOptions in
-
 		$NO_PLAY)
 			playerPosition=$playerPosition
 			;;
@@ -27,7 +25,6 @@ function setPlayerMoves() {
 			playerPosition=$((playerPosition - dieValue))
 			;;
 	esac
-
 		#!Reset player Position if position is not between 0 to 100
 		resetPosition
 
@@ -35,17 +32,17 @@ function setPlayerMoves() {
 function exactWinPosition() {
 	while [ $playerPosition -ne 100 ]
 	do
-			setPlayerMoves
+		setPlayerMoves
 	done
 }
 
 function resetPosition() {
 	if [ $playerPosition -lt 0 ]
 	then
-			playerPosition=0
+		playerPosition=0
 	elif [ $playerPosition -gt 100 ]
 	then
-			playerPosition=$((playerPosition - daiValue))
+		playerPosition=$((playerPosition - daiValue))
 	fi
 }
 #!Start game
