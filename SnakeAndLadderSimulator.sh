@@ -19,6 +19,7 @@ do
 	#! Increment player Position according to $playingOptions
 
 	case $playingOptions in
+
 		$NO_PLAY)
 			playerPosition=$playerPosition
 			;;
