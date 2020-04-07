@@ -10,9 +10,6 @@ SNAKE=2
 #!Function To set playerPosition according to playing Options like NO_Play or Snake or Ladder
 function setPlayerMoves() {
 
-while [ $playerPosition -le 100 ]
-do
-
 	dieValue=$((RANDOM % 6 + 1))
 	playingOptions=$((RANDOM % 3))
 
@@ -30,13 +27,26 @@ do
 			playerPosition=$((playerPosition - dieValue))
 			;;
 	esac
-			if [ $playerPosition -lt 0 ]
-			then
-				playerPosition=0
-			fi
-	echo "Player Position : "$playerPosition
-done
+
+		#!Reset player Position if position is not between 0 to 100
+		resetPosition
+
+}
+function exactWinPosition() {
+	while [ $playerPosition -ne 100 ]
+	do
+			setPlayerMoves
+	done
 }
 
+function resetPosition() {
+	if [ $playerPosition -lt 0 ]
+	then
+			playerPosition=0
+	elif [ $playerPosition -gt 100 ]
+	then
+			playerPosition=$((playerPosition - daiValue))
+	fi
+}
 #!Start game
-setPlayerMoves
+exactWinPosition
